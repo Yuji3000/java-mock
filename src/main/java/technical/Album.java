@@ -43,7 +43,7 @@ public class Album {
     /**
      * Setter method for the name of the album
      *
-     * @param name the new name of the album
+     * @param albumName the new name of the album
      */
     public void setAlbumName(String albumName) {
         throw new MissingImplementationException();
