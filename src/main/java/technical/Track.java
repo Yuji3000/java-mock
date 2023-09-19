@@ -59,7 +59,7 @@ public class Track {
 	/**
 	 * Setter method for the title of the track.
 	 *
-	 * @param name the new title of the track
+	 * @param trackTitle the new title of the track
 	 */
 	public void setTrackTitle(String trackTitle) {
 		this.trackTitle = trackTitle;
