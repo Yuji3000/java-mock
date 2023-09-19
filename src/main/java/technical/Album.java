@@ -9,25 +9,25 @@ public class Album {
     // Add required fields here (Make sure they are private)
 
     /**
-     * Constructs an Album and assigns values to the artist and name fields
+     * Constructs an Album and assigns values to the artist and albumName fields
      *
-     * @param artist the artist to assign to the artist field
-     * @param name   the name to assign to the name field
+     * @param artist      the artist to assign to the artist field
+     * @param albumName   the name to assign to the albumName field
      */
-    public Album(String artist, String name) {
+    public Album(String artist, String albumName) {
         throw new MissingImplementationException();
     }
 
     /**
-     * Constructs an Album and assigns values to the artist, tracks and name fields.
-     * This constructor should assign the provided artist and this album to each
-     * track in the passed in tracks list.
+     * Constructs an Album and assigns values to the artist, tracks, and albumName fields.
+     * This constructor should also assign the provided artist and this album to each
+     * track's artist and album in the passed in tracks list.
      *
-     * @param artist the artist to assign to the artist field
-     * @param tracks the tracks to assign to the tracks field
-     * @param name   the name to assign to the name field
+     * @param artist      the artist to assign to the artist field
+     * @param tracks      the tracks to assign to the tracks field
+     * @param albumName   the name to assign to the albumName field
      */
-    public Album(String artist, List<Track> tracks, String name) {
+    public Album(String artist, List<Track> tracks, String albumName) {
         throw new MissingImplementationException();
     }
 
@@ -36,7 +36,7 @@ public class Album {
      *
      * @return the name of the album
      */
-    public String getName() {
+    public String getAlbumName() {
         throw new MissingImplementationException();
     }
 
@@ -45,7 +45,7 @@ public class Album {
      *
      * @param name the new name of the album
      */
-    public void setName(String name) {
+    public void setAlbumName(String albumName) {
         throw new MissingImplementationException();
     }
 
@@ -69,6 +69,7 @@ public class Album {
 
     /**
      * Getter method for the tracks on an album.
+     * 
      * IMPORTANT: This should return a defensive copy.
      *
      * @return a list of tracks on the album
@@ -78,13 +79,12 @@ public class Album {
     }
 
     /**
-     * Calculate the length of the album by summing the length of each track on this
+     * Calculate the total duration of the album by summing the duration of each track on this
      * album.
-     * IMPORTANT: Remember that a Track is itself an object with a length property.
      *
      * @return the sum of each individual track's length on this album
      */
-    public double getAlbumLength() {
+    public double getAlbumDuration() {
         throw new MissingImplementationException();
     }
 
@@ -92,7 +92,7 @@ public class Album {
      * This method should add the provided track to this album's tracks list. It
      * should not add null values to the list. It should also update the track's
      * artist to match this album's artist and set this album to be the track's
-     * album.
+     * album. If the addition was successful, return true, otherwise, return false.
      *
      * @param track the track to add to the tracks list
      * @return true if the track was added. false otherwise.
@@ -104,7 +104,7 @@ public class Album {
     /**
      * This method should remove the provided track from this album. It should also
      * set the track's artist and album to null if the provided track was in the
-     * tracks list.
+     * tracks list. If the removal was successful, return true, otherwise, return false.
      *
      * @param track the track to remove from the tracks list
      * @return true if the track was removed. false otherwise.
@@ -114,12 +114,12 @@ public class Album {
     }
 
     /**
-     * BONUS: This method should sort the tracks list based on the rule string
+     * BONUS: This method should directly sort the tracks list based on the rule string
      * passed in:
-     * If rule is "length" then sort the tracks in ascending order by their length
+     * If rule is "duration" then directly sort the tracks in ascending order by their duration
      * (in minutes)
-     * If rule is "name" then sort the tracks in alphabetical order based on their
-     * name
+     * If rule is "title" then directly sort the tracks in alphabetical order based on their
+     * trackTitle
      * Otherwise don't apply any sort to the tracks list
      *
      * @param rule the rule string to determine the sort

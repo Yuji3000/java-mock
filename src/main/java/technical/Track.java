@@ -2,85 +2,85 @@ package technical;
 
 public class Track {
 
-	private String name;
-	private double length;
+	private String trackTitle;
+	private double duration;
 	private String artist;
 	private Album album;
 
 	/**
-	 * Constructs a Track assigning values to the name and length fields
+	 * Constructs a Track assigning values to the trackTitle and duration fields
 	 *
-	 * @param name   the name to assign to the name field
-	 * @param length the length to assign to the length field
+	 * @param trackTitle   the title to assign to the trackTitle field
+	 * @param duration     the duration to assign to the duration field
 	 */
-	public Track(String name, double length) {
-		this.name = name;
-		this.length = length;
+	public Track(String trackTitle, double duration) {
+		this.trackTitle = trackTitle;
+		this.duration = duration;
 	}
 
 	/**
-	 * Constructs a Track assigning values to the name, length and artist fields.
+	 * Constructs a Track assigning values to the trackTitle, duration, and artist fields.
 	 *
-	 * @param name   the name to assign to the name field
-	 * @param length the length to assign to the length field
-	 * @param artist the artist to assign to the artist field
+	 * @param trackTitle   the title to assign to the trackTitle field
+	 * @param duration     the duration to assign to the duration field
+	 * @param artist       the artist to assign to the artist field
 	 */
-	public Track(String name, double length, String artist) {
-		this.name = name;
-		this.length = length;
+	public Track(String trackTitle, double duration, String artist) {
+		this.trackTitle = trackTitle;
+		this.duration = duration;
 		this.artist = artist;
 	}
 
 	/**
-	 * Constructs a Track assigning values to the name, length, album, and artist
+	 * Constructs a Track assigning values to the trackTitle, length, album, and artist
 	 * fields.
 	 *
-	 * @param name   the name to assign to the name field
-	 * @param length the length (in minutes) to assign to the length field
-	 * @param album  the album to assign to the album field
-	 * @param artist the artist to assign to the artist field
+	 * @param trackTitle   the title to assign to the trackTitle field
+	 * @param duration     the duration (in minutes) to assign to the duration field
+	 * @param album        the album to assign to the album field
+	 * @param artist       the artist to assign to the artist field
 	 */
-	public Track(String name, double length, Album album, String artist) {
-		this.name = name;
-		this.length = length;
+	public Track(String trackTitle, double duration, Album album, String artist) {
+		this.trackTitle = trackTitle;
+		this.duration = duration;
 		this.artist = artist;
 		this.album = album;
 	}
 
 	/**
-	 * Getter method for the name of the track.
+	 * Getter method for the title of the track.
 	 *
-	 * @return the name of the track
+	 * @return the title of the track
 	 */
-	public String getName() {
-		return name;
+	public String getTrackTitle() {
+		return trackTitle;
 	}
 
 	/**
-	 * Setter method for the name of the track.
+	 * Setter method for the title of the track.
 	 *
-	 * @param name the new name of the track
+	 * @param name the new title of the track
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setTrackTitle(String trackTitle) {
+		this.trackTitle = trackTitle;
 	}
 
 	/**
-	 * Getter method for the length (in minutes) of the track.
+	 * Getter method for the duration (in minutes) of the track.
 	 *
-	 * @return the length (in minutes) of the track
+	 * @return the duration (in minutes) of the track
 	 */
-	public double getLength() {
-		return length;
+	public double getDuration() {
+		return duration;
 	}
 
 	/**
-	 * Setter method for the length (in minutes) of the track.
+	 * Setter method for the duration (in minutes) of the track.
 	 *
-	 * @param length the new length (in minutes) of the track
+	 * @param duration the new duration (in minutes) of the track
 	 */
-	public void setLength(double length) {
-		this.length = length;
+	public void setDuration(double duration) {
+		this.duration = duration;
 	}
 
 	/**
