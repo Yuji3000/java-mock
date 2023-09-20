@@ -14,14 +14,14 @@ import technical.Track;
 public class AlbumTest {
 
     @Test
-    void constructorWithArtistAndNameTest() {
+    void constructorWithArtistAndTitleTest() {
         Album album = new Album("Artist1", "Album1");
         assertEquals("Artist1", album.getArtist());
         assertEquals("Album1", album.getAlbumName());
     }
 
     @Test
-    void constructorWithArtistTracksAndNameTest() {
+    void constructorWithArtistTracksAndTitleTest() {
         Track track1 = new Track("Track1", 2.42);
         Track track2 = new Track("Track2", 3.34);
         Track track3 = new Track("Track3", 1.57);
@@ -69,30 +69,28 @@ public class AlbumTest {
         Track track4 = new Track("Track4", 2.09);
         List<Track> tracks = new ArrayList<>(Arrays.asList(track1, track2, track3, track4));
         Album album = new Album("Artist1", new ArrayList<>(tracks), "Album1");
-
         List<Track> modifyList = album.getTracks();
         modifyList.remove(track1);
         modifyList.remove(track2);
-
         assertNotEquals(tracks, modifyList);
         assertEquals(tracks, album.getTracks());
     }
 
     @Test
-    void getNameTest() {
+    void getTitleTest() {
         Album album = new Album("Artist1", "Album1");
         assertEquals("Album1", album.getAlbumName());
     }
 
     @Test
-    void setNameTest() {
+    void setTitleTest() {
         Album album = new Album("Artist1", "Album1");
         album.setAlbumName("Album2");
         assertEquals("Album2", album.getAlbumName());
     }
 
     @Test
-    void getAlbumLengthTest() {
+    void getAlbumDurationTest() {
         Track track1 = new Track("Track1", 2.42);
         Track track2 = new Track("Track2", 3.34);
         Track track3 = new Track("Track3", 1.57);

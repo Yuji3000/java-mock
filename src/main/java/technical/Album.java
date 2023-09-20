@@ -20,8 +20,8 @@ public class Album {
 
     /**
      * Constructs an Album and assigns values to the artist, tracks, and albumName fields.
-     * This constructor should also assign the provided artist and this album to each
-     * track's artist and album in the passed in tracks list.
+     * This constructor should also set each track's artist to match this album's 
+     * artist and set this album to be each track's album.
      *
      * @param artist      the artist to assign to the artist field
      * @param tracks      the tracks to assign to the tracks field
@@ -90,7 +90,7 @@ public class Album {
 
     /**
      * This method should add the provided track to this album's tracks list. It
-     * should not add null values to the list. It should also update the track's
+     * should not add null values to the list. It should also set the track's
      * artist to match this album's artist and set this album to be the track's
      * album. If the addition was successful, return true, otherwise, return false.
      *

@@ -8,14 +8,14 @@ import technical.Track;
 public class TrackTest {
 
     @Test
-    void constructorWithNameAndLengthTest() {
+    void constructorWithTitleAndDurationTest() {
         Track testTrack = new Track("TestTrack", 2.01);
         assertEquals("TestTrack", testTrack.getTrackTitle());
         assertEquals(2.01, testTrack.getDuration());
     }
 
     @Test
-    void constructorWithNameLengthAndArtist() {
+    void constructorWithTitleDurationAndArtist() {
         Track testTrack = new Track("TestTrack", 2.01, "Artist1");
         assertEquals("TestTrack", testTrack.getTrackTitle());
         assertEquals(2.01, testTrack.getDuration());
@@ -23,7 +23,7 @@ public class TrackTest {
     }
 
     @Test
-    void constructorWithNameLengthArtistAndAlbum() {
+    void constructorWithTitleDurationArtistAndAlbum() {
         Album album = new Album("Test", "Test");
         Track testTrack = new Track("TestTrack", 2.01, album, "Artist1");
         assertEquals("TestTrack", testTrack.getTrackTitle());
@@ -33,26 +33,26 @@ public class TrackTest {
     }
 
     @Test
-    void getNameTest() {
+    void getTitleTest() {
         Track testTrack = new Track("TestTrack", 2.01);
         assertEquals("TestTrack", testTrack.getTrackTitle());
     }
 
     @Test
-    void setNameTest() {
+    void setTitleTest() {
         Track testTrack = new Track("TestTrack", 2.01);
         testTrack.setTrackTitle("Track1");
         assertEquals("Track1", testTrack.getTrackTitle());
     }
 
     @Test
-    void getLengthTest() {
+    void getDurationTest() {
         Track testTrack = new Track("TestTrack", 2.01);
         assertEquals(2.01, testTrack.getDuration());
     }
 
     @Test
-    void setLengthTest() {
+    void setDurationTest() {
         Track testTrack = new Track("TestTrack", 2.01);
         assertEquals(2.01, testTrack.getDuration());
         testTrack.setDuration(1.00);
