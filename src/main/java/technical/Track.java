@@ -45,6 +45,8 @@ public class Track {
 		this.duration = duration;
 		this.artist = artist;
 		this.album = album;
+		
+		
 	}
 
 	/**
@@ -95,10 +97,10 @@ public class Track {
 	/**
 	 * Setter method for the album of the track.
 	 *
-	 * @param album the new album of the track
+	 * @param album2 the new album of the track
 	 */
-	public void setAlbum(Album album) {
-		this.album = album;
+	public void setAlbum(Album album2) {
+		this.album = album2;
 	}
 
 	/**

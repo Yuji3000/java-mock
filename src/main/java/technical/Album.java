@@ -36,6 +36,11 @@ public class Album {
         this.artist = artist;
         this.tracks = tracks;
         this.albumName = albumName;
+        
+        for (Track t: tracks) {
+        	t.setAlbum(this);
+        	t.setArtist(artist);
+        }
     }
 
     /**
@@ -112,7 +117,12 @@ public class Album {
      * @return true if the track was added. false otherwise.
      */
     public boolean addTrack(Track track) {
-        throw new MissingImplementationException();
+    	if (track != null) {
+	        track.setAlbum(this);
+	        track.setArtist(this.artist);
+	    	tracks.add(track);
+    	}
+    	return tracks.contains(track);
     }
 
     /**
@@ -124,7 +134,12 @@ public class Album {
      * @return true if the track was removed. false otherwise.
      */
     public boolean removeTrack(Track track) {
-        throw new MissingImplementationException();
+    	if (track != null) {
+    		track.setAlbum(null);
+	        track.setArtist(null);
+	    	tracks.remove(track);
+    	}
+    	return tracks.contains(track);
     }
 
     /**
