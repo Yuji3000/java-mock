@@ -1,161 +1,196 @@
 package technical;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import technical.exceptions.MissingImplementationException;
 
 public class Album {
 
-    // Add required fields here (Make sure they are private)
+	// Add required fields here (Make sure they are private)
 	private String albumName;
 	private String artist;
 	private List<Track> tracks;
+
+	/**
+	 * Constructs an Album and assigns values to the artist and albumName fields
+	 *
+	 * @param artist    the artist to assign to the artist field
+	 * @param albumName the name to assign to the albumName field
+	 */
+	public Album(String artist, String albumName) {
+		this.artist = artist;
+		this.albumName = albumName;
+	}
+
+	/**
+	 * Constructs an Album and assigns values to the artist, tracks, and albumName
+	 * fields. This constructor should also set each track's artist to match this
+	 * album's artist and set this album to be each track's album.
+	 *
+	 * @param artist    the artist to assign to the artist field
+	 * @param tracks    the tracks to assign to the tracks field
+	 * @param albumName the name to assign to the albumName field
+	 */
+	public Album(String artist, List<Track> tracks, String albumName) {
+		this.artist = artist;
+		this.albumName = albumName;
+
+		for (Track t : tracks) {
+			t.setAlbum(this);
+			t.setArtist(artist);
+		}
+		this.tracks = tracks;
+	}
+
+	/**
+	 * Getter method for the name of an album
+	 *
+	 * @return the name of the album
+	 */
+	public String getAlbumName() {
+		return albumName;
+	}
+
+	/**
+	 * Setter method for the name of the album
+	 *
+	 * @param albumName the new name of the album
+	 */
+	public void setAlbumName(String albumName) {
+		this.albumName = albumName;
+	}
+
+	/**
+	 * Getter method for the artist of an album.
+	 *
+	 * @return the artist of the album
+	 */
+	public String getArtist() {
+		return artist;
+	}
+
+	/**
+	 * Setter method for the artist of the album.
+	 *
+	 * @param artist the new artist of the album
+	 */
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+
+	/**
+	 * Getter method for the tracks on an album.
+	 * 
+	 * IMPORTANT: This should return a defensive copy.
+	 *
+	 * @return a list of tracks on the album
+	 */
+	public List<Track> getTracks() {
+		return new ArrayList<>(tracks);
+	}
+
+	/**
+	 * Calculate the total duration of the album by summing the duration of each
+	 * track on this album.
+	 *
+	 * @return the sum of each individual track's length on this album
+	 */
+	public double getAlbumDuration() {
+		double albumDuration = 0;
+
+		for (Track t : tracks) {
+			albumDuration += t.getDuration();
+		}
+
+		return albumDuration;
+	}
+
+	/**
+	 * This method should add the provided track to this album's tracks list. It
+	 * should not add null values to the list. It should also set the track's artist
+	 * to match this album's artist and set this album to be the track's album. If
+	 * the addition was successful, return true, otherwise, return false.
+	 *
+	 * @param track the track to add to the tracks list
+	 * @return true if the track was added. false otherwise.
+	 */
+	public boolean addTrack(Track track) {
+		if (track != null) {
+			track.setAlbum(this);
+			track.setArtist(this.artist);
+			tracks.add(track);
+		}
+		return tracks.contains(track);
+	}
+
+	/**
+	 * This method should remove the provided track from this album. It should also
+	 * set the track's artist and album to null if the provided track was in the
+	 * tracks list. If the removal was successful, return true, otherwise, return
+	 * false.
+	 *
+	 * @param track the track to remove from the tracks list
+	 * @return true if the track was removed. false otherwise.
+	 */
+	public boolean removeTrack(Track track) {
+		if (track != null) {
+			track.setAlbum(null);
+			track.setArtist(null);
+			tracks.remove(track);
+		}
+		return tracks.contains(track);
+	}
+
+	/**
+	 * BONUS: This method should directly sort the tracks list based on the rule
+	 * string passed in: If rule is "duration" then directly sort the tracks in
+	 * ascending order by their duration (in minutes) If rule is "title" then
+	 * directly sort the tracks in alphabetical order based on their trackTitle
+	 * Otherwise don't apply any sort to the tracks list
+	 *
+	 * @param rule the rule string to determine the sort
+	 * @return the tracks list after the appropriate sort is applied
+	 */
+
+	public List<Track> sortBy(String rule) {
+		  if (rule != null) {
+		        switch (rule.toLowerCase()) {
+		            case "duration":
+		                Collections.sort(tracks, Comparator.comparingDouble(Track::getDuration));
+		                break;
+		            case "title":
+		                Collections.sort(tracks, Comparator.comparing(Track::getTrackTitle, String.CASE_INSENSITIVE_ORDER));
+		                break;
+		            default:
+		               
+		                break;
+		        }
+		    }
+		    return tracks;
+	}
 	
-    /**
-     * Constructs an Album and assigns values to the artist and albumName fields
-     *
-     * @param artist      the artist to assign to the artist field
-     * @param albumName   the name to assign to the albumName field
-     */
-    public Album(String artist, String albumName) {
-        this.artist = artist;
-        this.albumName = albumName;
-    }
-
-    /**
-     * Constructs an Album and assigns values to the artist, tracks, and albumName fields.
-     * This constructor should also set each track's artist to match this album's 
-     * artist and set this album to be each track's album.
-     *
-     * @param artist      the artist to assign to the artist field
-     * @param tracks      the tracks to assign to the tracks field
-     * @param albumName   the name to assign to the albumName field
-     */
-    public Album(String artist, List<Track> tracks, String albumName) {
-        this.artist = artist;
-        this.tracks = tracks;
-        this.albumName = albumName;
-        
-        for (Track t: tracks) {
-        	t.setAlbum(this);
-        	t.setArtist(artist);
-        }
-    }
-
-    /**
-     * Getter method for the name of an album
-     *
-     * @return the name of the album
-     */
-    public String getAlbumName() {
-        return albumName;
-    }
-
-    /**
-     * Setter method for the name of the album
-     *
-     * @param albumName the new name of the album
-     */
-    public void setAlbumName(String albumName) {
-        this.albumName = albumName;
-    }
-
-    /**
-     * Getter method for the artist of an album.
-     *
-     * @return the artist of the album
-     */
-    public String getArtist() {
-        return artist;
-    }
-
-    /**
-     * Setter method for the artist of the album.
-     *
-     * @param artist the new artist of the album
-     */
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    /**
-     * Getter method for the tracks on an album.
-     * 
-     * IMPORTANT: This should return a defensive copy.
-     *
-     * @return a list of tracks on the album
-     */
-    public List<Track> getTracks() {
-        List<Track> allTracks = new ArrayList<>(tracks);
-        return allTracks;
-    }
-
-    /**
-     * Calculate the total duration of the album by summing the duration of each track on this
-     * album.
-     *
-     * @return the sum of each individual track's length on this album
-     */
-    public double getAlbumDuration() {
-        double albumDuration = 0;
-        
-        for (Track t : tracks) {
-        	albumDuration += t.getDuration();
-        }
-        
-        return albumDuration;
-    }
-
-    /**
-     * This method should add the provided track to this album's tracks list. It
-     * should not add null values to the list. It should also set the track's
-     * artist to match this album's artist and set this album to be the track's
-     * album. If the addition was successful, return true, otherwise, return false.
-     *
-     * @param track the track to add to the tracks list
-     * @return true if the track was added. false otherwise.
-     */
-    public boolean addTrack(Track track) {
-    	if (track != null) {
-	        track.setAlbum(this);
-	        track.setArtist(this.artist);
-	    	tracks.add(track);
-    	}
-    	return tracks.contains(track);
-    }
-
-    /**
-     * This method should remove the provided track from this album. It should also
-     * set the track's artist and album to null if the provided track was in the
-     * tracks list. If the removal was successful, return true, otherwise, return false.
-     *
-     * @param track the track to remove from the tracks list
-     * @return true if the track was removed. false otherwise.
-     */
-    public boolean removeTrack(Track track) {
-    	if (track != null) {
-    		track.setAlbum(null);
-	        track.setArtist(null);
-	    	tracks.remove(track);
-    	}
-    	return tracks.contains(track);
-    }
-
-    /**
-     * BONUS: This method should directly sort the tracks list based on the rule string
-     * passed in:
-     * If rule is "duration" then directly sort the tracks in ascending order by their duration
-     * (in minutes)
-     * If rule is "title" then directly sort the tracks in alphabetical order based on their
-     * trackTitle
-     * Otherwise don't apply any sort to the tracks list
-     *
-     * @param rule the rule string to determine the sort
-     * @return the tracks list after the appropriate sort is applied
-     */
-    public List<Track> sortBy(String rule) {
-        throw new MissingImplementationException();
-    }
+		    
+//		if (rule != null) {
+//			if (rule.equalsIgnoreCase("duration")) {
+//				Collections.sort(tracks, new Comparator<Track>() {
+//					@Override
+//					public int compare(Track track1, Track track2) {
+//						return Double.compare(track1.getDuration(), track2.getDuration());
+//					}
+//				});
+//			} else if (rule.equalsIgnoreCase("title")) {
+//				Collections.sort(tracks, new Comparator<Track>() {
+//					@Override
+//					public int compare(Track track1, Track track2) {
+//						return track1.getTrackTitle().compareToIgnoreCase(track2.getTrackTitle());
+//					}
+//				});
+//			}
+//		}
+//		return tracks;
+//	}
 
 }
