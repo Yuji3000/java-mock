@@ -1,5 +1,6 @@
 package technical;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import technical.exceptions.MissingImplementationException;
@@ -7,7 +8,10 @@ import technical.exceptions.MissingImplementationException;
 public class Album {
 
     // Add required fields here (Make sure they are private)
-
+	private String albumName;
+	private String artist;
+	private List<Track> tracks;
+	
     /**
      * Constructs an Album and assigns values to the artist and albumName fields
      *
@@ -15,7 +19,8 @@ public class Album {
      * @param albumName   the name to assign to the albumName field
      */
     public Album(String artist, String albumName) {
-        throw new MissingImplementationException();
+        this.artist = artist;
+        this.albumName = albumName;
     }
 
     /**
@@ -28,7 +33,9 @@ public class Album {
      * @param albumName   the name to assign to the albumName field
      */
     public Album(String artist, List<Track> tracks, String albumName) {
-        throw new MissingImplementationException();
+        this.artist = artist;
+        this.tracks = tracks;
+        this.albumName = albumName;
     }
 
     /**
@@ -37,7 +44,7 @@ public class Album {
      * @return the name of the album
      */
     public String getAlbumName() {
-        throw new MissingImplementationException();
+        return albumName;
     }
 
     /**
@@ -46,7 +53,7 @@ public class Album {
      * @param albumName the new name of the album
      */
     public void setAlbumName(String albumName) {
-        throw new MissingImplementationException();
+        this.albumName = albumName;
     }
 
     /**
@@ -55,7 +62,7 @@ public class Album {
      * @return the artist of the album
      */
     public String getArtist() {
-        throw new MissingImplementationException();
+        return artist;
     }
 
     /**
@@ -64,7 +71,7 @@ public class Album {
      * @param artist the new artist of the album
      */
     public void setArtist(String artist) {
-        throw new MissingImplementationException();
+        this.artist = artist;
     }
 
     /**
@@ -75,7 +82,8 @@ public class Album {
      * @return a list of tracks on the album
      */
     public List<Track> getTracks() {
-        throw new MissingImplementationException();
+        List<Track> allTracks = new ArrayList<>(tracks);
+        return allTracks;
     }
 
     /**
@@ -85,7 +93,13 @@ public class Album {
      * @return the sum of each individual track's length on this album
      */
     public double getAlbumDuration() {
-        throw new MissingImplementationException();
+        double albumDuration = 0;
+        
+        for (Track t : tracks) {
+        	albumDuration += t.getDuration();
+        }
+        
+        return albumDuration;
     }
 
     /**
